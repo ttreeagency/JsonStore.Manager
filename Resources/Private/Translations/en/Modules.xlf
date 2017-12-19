@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+    <file original="" product-name="Ttree.JsonStore.Manager" source-language="en" datatype="plaintext">
+        <body>
+            <trans-unit id="jsonStore.label" xml:space="preserve">
+				<source>JSON Document Management</source>
+			</trans-unit>
+            <trans-unit id="jsonStore.description" xml:space="preserve">
+				<source>Manage JSON document by type</source>
+			</trans-unit>
+        </body>
+    </file>
+</xliff>

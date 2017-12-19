@@ -1,0 +1,13 @@
+privilegeTargets:
+
+  'TYPO3\Flow\Security\Authorization\Privilege\Method\MethodPrivilege':
+        'Ttree.JsonStore.Manager:BackendModule':
+          matcher: 'method(Ttree\JsonStore\Manager\Controller\Module\Management\JsonStoreController->.*Action())'
+
+roles:
+
+  'TYPO3.Neos:Editor':
+        privileges:
+          -
+                privilegeTarget: 'Ttree.JsonStore.Manager:BackendModule'
+                permission: GRANT

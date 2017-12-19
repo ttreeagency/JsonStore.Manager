@@ -1,0 +1,19 @@
+{
+    "description": "Neos CMS Backend to manage document from ttree/jsonstore",
+    "type": "neos-package",
+    "name": "ttree/jsonstore-manager",
+    "license": "MIT",
+    "require": {
+        "ttree/jsonstore": "^1.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Ttree\\JsonStore\\Manager\\": "Classes/"
+        }
+    },
+    "extra": {
+        "neos": {
+            "package-key": "Ttree.JsonStore.Manager"
+        }
+    }
+}

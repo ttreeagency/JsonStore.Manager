@@ -1,0 +1,39 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+<f:if condition="{documentTypes}">
+    <div class="neos-row-fluid">
+        <f:for each="{documentTypes}" key="documentTypeName" as="documentType" iteration="iterator">
+            <f:render section="submodule" arguments="{_all}" />
+        </f:for>
+    </div>
+</f:if>
+
+<f:section name="submodule">
+    <div class="neos-span4">
+        <div class="widget">
+            <div class="widget-header">
+                <f:if condition="{documentType.ui.icon}">
+                    <i class="{documentType.ui.icon} neos-pull-left"></i>
+                </f:if>
+                <h3>
+                    <f:link.action action="list" arguments="{type: documentTypeName}">
+                        <neos:backend.translate source="Modules" id="{documentType.ui.label}" />
+                    </f:link.action>
+                </h3>
+            </div>
+            <f:if condition="{documentType.ui.description}">
+                <div class="widget-body">
+                    <p><neos:backend.translate source="Modules" id="{documentType.ui.description}" /></p>
+                </div>
+            </f:if>
+        </div>
+    </div>
+    <f:if condition="{iterator.cycle} % 3">
+        <f:else>
+            <f:if condition="{iterator.isLast}">
+                <f:else>
+                    </div><div class="neos-row-fluid">
+                </f:else>
+            </f:if>
+        </f:else>
+    </f:if>
+</f:section>

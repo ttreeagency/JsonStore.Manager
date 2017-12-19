@@ -1,0 +1,42 @@
+{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace jsonstore=Ttree\JsonStore\Manager\ViewHelpers}
+<h1>{configuration.ui.label}
+    <small style="font-weight: normal;">({numberOfDocuments} documents)</small>
+</h1>
+<div class="neos-row-fluid">
+    <f:widget.paginate objects="{documents}" as="paginatedDocuments" configuration="{itemsPerPage: configuration.ui.itemsPerPage}">
+        <table class="neos-table">
+            <thead>
+            <tr>
+                <th>Label</th>
+                <th>Creation</th>
+                <th>Modification</th>
+                <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
+                    <f:if condition="{configuration.l10n}">
+                        <f:then>
+                            <th>{neos:backend.translate(id: propertyPath, source: configuration.l10n.source, package: configuration.l10n.package)}</th>
+                        </f:then>
+                        <f:else>
+                            <th>{propertyConfiguration.label}</th>
+                        </f:else>
+                    </f:if>
+                </f:for>
+                <th>&nbsp</th>
+            </tr>
+            </thead>
+            <f:for each="{paginatedDocuments}" as="document">
+                <tr>
+                    <td><b>{document.label}</b></td>
+                    <td>{f:format.date(date: document.createdAt, format: 'd.m.Y H:i')}</td>
+                    <td>{f:format.date(date: document.updatedAt, format: 'd.m.Y H:i')}</td>
+                    <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
+                        <td>
+                            <jsonstore:objectAccess subject="{document.data}" path="{propertyPath}" />
+                        </td>
+                    </f:for>
+                    <td>&nbsp</td>
+                </tr>
+            </f:for>
+        </table>
+    </f:widget.paginate>
+</div>
