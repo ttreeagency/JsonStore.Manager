@@ -1,26 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
-    <file original="" product-name="Ttree.JsonStore.Manager" source-language="en" datatype="plaintext">
+    <file original="" product-name="Ttree.JsonStore.Manager" source-language="de" datatype="plaintext">
         <body>
             <trans-unit id="jsonStore.label" xml:space="preserve">
-				<source>JSON Document Management</source>
+				<source>JSON Dokumentenmanagement</source>
 			</trans-unit>
             <trans-unit id="jsonStore.description" xml:space="preserve">
-				<source>Manage JSON document by type</source>
+				<source>JSON-Dokument nach Typ verwalten</source>
 			</trans-unit>
 
             <trans-unit id="count" xml:space="preserve">
-				<source>({0} documents)</source>
+				<source>({0} Dokumente)</source>
 			</trans-unit>
 
             <trans-unit id="table.head.label" xml:space="preserve">
 				<source>Label</source>
 			</trans-unit>
             <trans-unit id="table.head.creation" xml:space="preserve">
-				<source>Creation date</source>
+				<source>Erstellungsdatum</source>
 			</trans-unit>
             <trans-unit id="table.head.modification" xml:space="preserve">
-				<source>Modification date</source>
+				<source>Änderungsdatum</source>
 			</trans-unit>
         </body>
     </file>

@@ -1,11 +1,9 @@
 <?php
-
 namespace Ttree\JsonStore\Manager\Controller\Module\Management;
 
-use Ttree\JsonStore\Service\DocumentTypeManager;
+use Neos\Flow\Annotations as Flow;
+use Neos\Neos\Controller\Module\AbstractModuleController;
 use Ttree\JsonStore\Service\StoreService;
-use TYPO3\Flow\Annotations as Flow;
-use TYPO3\Neos\Controller\Module\AbstractModuleController;
 
 /**
  * @Flow\Scope("singleton")
@@ -17,12 +15,6 @@ class JsonStoreController extends AbstractModuleController
      * @Flow\Inject
      */
     protected $store;
-
-    /**
-     * @var DocumentTypeManager
-     * @Flow\Inject
-     */
-    protected $documentTypeManager;
 
     /**
      * @var array
