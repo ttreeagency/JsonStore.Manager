@@ -1,42 +1,51 @@
-{namespace neos=TYPO3\Neos\ViewHelpers}
+{namespace neos=Neos\Neos\ViewHelpers}
 {namespace jsonstore=Ttree\JsonStore\Manager\ViewHelpers}
-<h1>{configuration.ui.label}
-    <small style="font-weight: normal;">({numberOfDocuments} documents)</small>
-</h1>
-<div class="neos-row-fluid">
-    <f:widget.paginate objects="{documents}" as="paginatedDocuments" configuration="{itemsPerPage: configuration.ui.itemsPerPage}">
-        <table class="neos-table">
-            <thead>
-            <tr>
-                <th>Label</th>
-                <th>Creation</th>
-                <th>Modification</th>
-                <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
-                    <f:if condition="{configuration.l10n}">
-                        <f:then>
-                            <th>{neos:backend.translate(id: propertyPath, source: configuration.l10n.source, package: configuration.l10n.package)}</th>
-                        </f:then>
-                        <f:else>
-                            <th>{propertyConfiguration.label}</th>
-                        </f:else>
-                    </f:if>
+<f:layout name="BackendSubModule" />
+
+<f:section name="subtitle">
+    <div class="neos-module-container">
+        <h2>{neos:backend.translate(source: 'Modules', id: configuration.ui.label)} <small style="font-weight: normal;">{neos:backend.translate(source: 'Modules', id: 'count', arguments: {0: numberOfDocuments})}</small></h2>
+    </div>
+</f:section>
+
+<f:section name="content">
+    <div class="neos-row-fluid">
+        <f:widget.paginate objects="{documents}" as="paginatedDocuments" configuration="{itemsPerPage: configuration.ui.itemsPerPage}">
+            <table class="neos-table">
+                <thead>
+                    <tr>
+                        <th>{neos:backend.translate(source: 'Modules', id: 'table.head.label')}</th>
+                        <th>{neos:backend.translate(source: 'Modules', id: 'table.head.creation')}</th>
+                        <th>{neos:backend.translate(source: 'Modules', id: 'table.head.modification')}</th>
+                        <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
+                            <th>
+                                <f:if condition="{configuration.l10n}">
+                                    <f:then>{neos:backend.translate(id: propertyPath, source: configuration.l10n.source, package: configuration.l10n.package)}</f:then>
+                                    <f:else>{propertyConfiguration.label}</f:else>
+                                </f:if>
+                            </th>
+                        </f:for>
+                    </tr>
+                </thead>
+                <f:for each="{paginatedDocuments}" as="document">
+                    <tr>
+                        <td><b>{document.label}</b></td>
+                        <td>{f:format.date(date: document.createdAt, format: 'd.m.Y H:i')}</td>
+                        <td>{f:format.date(date: document.updatedAt, format: 'd.m.Y H:i')}</td>
+                        <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
+                            <td>
+                                <jsonstore:objectAccess subject="{document.data}" path="{propertyPath}" />
+                            </td>
+                        </f:for>
+                    </tr>
                 </f:for>
-                <th>&nbsp</th>
-            </tr>
-            </thead>
-            <f:for each="{paginatedDocuments}" as="document">
-                <tr>
-                    <td><b>{document.label}</b></td>
-                    <td>{f:format.date(date: document.createdAt, format: 'd.m.Y H:i')}</td>
-                    <td>{f:format.date(date: document.updatedAt, format: 'd.m.Y H:i')}</td>
-                    <f:for each="{configuration.properties}" key="propertyPath" as="propertyConfiguration">
-                        <td>
-                            <jsonstore:objectAccess subject="{document.data}" path="{propertyPath}" />
-                        </td>
-                    </f:for>
-                    <td>&nbsp</td>
-                </tr>
-            </f:for>
-        </table>
-    </f:widget.paginate>
-</div>
+            </table>
+        </f:widget.paginate>
+    </div>
+
+    <div class="neos-footer">
+        <div class="pull-left">
+            <f:link.action action="index" class="neos-button">{neos:backend.translate(id: 'back', source: 'Main', package: 'Neos.Neos')}</f:link.action>
+        </div>
+    </div>
+</f:section>

@@ -1,9 +1,8 @@
 <?php
-
 namespace Ttree\JsonStore\Manager\ViewHelpers;
 
-use TYPO3\Flow\Reflection\ObjectAccess;
-use TYPO3\Fluid\Core\ViewHelper\AbstractViewHelper;
+use Neos\Utility\ObjectAccess;
+use Neos\FluidAdaptor\Core\ViewHelper\AbstractViewHelper;
 
 /**
  * @api

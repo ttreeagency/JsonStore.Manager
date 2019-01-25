@@ -1,0 +1,18 @@
+{namespace neos=Neos\Neos\ViewHelpers}
+<div class="widget">
+	<div class="widget-header">
+		<f:if condition="{documentType.ui.icon}">
+			<i class="{documentType.ui.icon} neos-pull-left"></i>
+		</f:if>
+		<h3>
+			<f:link.action action="list" arguments="{type: documentTypeName}">
+				<neos:backend.translate source="Modules" id="{documentType.ui.label}" />
+			</f:link.action>
+		</h3>
+	</div>
+	<f:if condition="{documentType.ui.description}">
+		<div class="widget-body">
+			<p><neos:backend.translate source="Modules" id="{documentType.ui.description}" /></p>
+		</div>
+	</f:if>
+</div>

@@ -1,64 +1,14 @@
 Ttree:
   JsonStore:
     Manager:
-      documentTypes:
-        'ch.ttree.store.document.test.v1':
-          type: 'ch.ttree.store.document.test.v1'
-          ui:
-            label: 'Test Document'
-            description: ' Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi in velit non quam fringilla congue eu vitae dolor. Suspendisse finibus scelerisque massa ut molestie. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Morbi et quam elementum, varius ipsum quis, iaculis risus. In a gravida mi. Nam cursus sed tortor consectetur egestas. Vivamus nec iaculis lacus. Praesent consequat eros odio, sit amet pretium mi porta ac. Nam elementum sem nulla, sed ultrices leo pharetra eget. Nam vitae magna vitae neque iaculis iaculis. Sed eu ante urna.'
-            icon: 'icon-cog'
-            itemsPerPage: 50
-          properties:
-            title:
-              type: string
-              label: 'Title'
-            firstName:
-              type: string
-              label: 'Firstname'
-            lastName:
-              type: string
-              label: 'Lastname'
-            username:
-              type: string
-              label: 'Username'
-            email:
-              type: string
-              label: 'Email'
+      documentTypes: []
 
-        'ch.nccr-marvel.newsletter.subscription':
-          type: 'ch.nccr-marvel.newsletter.subscription'
-          ui:
-            label: 'Online Newsletter Subscription'
-            description: 'All subscription to the newsletter from the online subscription form'
-            icon: 'icon-envelope'
-            itemsPerPage: 50
-          properties:
-            organization:
-              type: string
-              label: 'Organization'
-            targetIndustry:
-              type: string
-              label: 'Industry?'
-            targetScientific:
-              type: string
-              label: 'Scientific?'
-            firstname:
-              type: string
-              label: 'Firstname'
-            lastname:
-              type: string
-              label: 'Lastname'
-            email:
-              type: string
-              label: 'Email'
-
-TYPO3:
+Neos:
   Neos:
     userInterface:
       translation:
         autoInclude:
-          'Ttree.JsonStore.Manager': ['Modules']
+          Ttree.JsonStore.Manager: ['Modules']
 
     modules:
       management:
@@ -67,5 +17,5 @@ TYPO3:
             label: 'Ttree.JsonStore.Manager:Modules:jsonStore.label'
             controller: '\Ttree\JsonStore\Manager\Controller\Module\Management\JsonStoreController'
             description: 'Ttree.JsonStore.Manager:Modules:jsonStore.description'
-            icon: 'icon-th-large'
-            privilegeTarget: 'TYPO3.Neos:Backend.Module.Management.Workspaces'
+            icon: 'fas fa-book'
+            privilegeTarget: 'Ttree.JsonStore.Manager:BackendModule'
